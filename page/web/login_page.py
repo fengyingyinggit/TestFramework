@@ -11,5 +11,6 @@ class LoginPage(BasePage):
     signin_input = (By.XPATH,'//input[@value="Sign in" or @value="登录"]')
     yes_button = (By.XPATH, '//input[@value="Yes" or @value="是"]')
     no_button = (By.XPATH, '//input[@value="No" or @value="否"]')
+    phone_verify = (By.ID, 'WindowsAzureMultiFactorAuthentication')
 
 

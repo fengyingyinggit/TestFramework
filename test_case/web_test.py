@@ -31,8 +31,8 @@ class web_test(BaseWebTestCase):
 
         # for SROL1 and SROL2, we can use test accounts.
         # You can edit web_config.yaml but please do not commit the file.
-        res = _loginBusiness.login(self.data['user']['test1'], self.data['pwd']['commonpwd'])
-        self.assertTrue(res, 'Able to sign in %s with account %s' %(self.env, self.data['user']['test1']))
+        res = _loginBusiness.login(self.data['user']['personalAccount'], self.data['pwd']['commonpwd'])
+        self.assertTrue(res, 'Able to sign in %s with account %s' %(self.env, self.data['user']['personalAccount']))
         # For PPE and MSIT, we can use our personal accounts.
         # MSIT may meet some additional steps for security reason which bloacks the test
         # PPE is much slower and need to wait for more seconds.

@@ -13,6 +13,7 @@ class LoginBusiness(BaseWebPage):
     data = Yaml(Yaml.web_config_path).read()
     username = data['user']['personalAccount']
     password = data['pwd']['commonpwd']
+    url = data['verify']['ppe']
 
     def __init__(self, driver):
         BaseWebPage.__init__(self=self, driver=driver)
@@ -29,10 +30,12 @@ class LoginBusiness(BaseWebPage):
             self.click(self._page.next_input)
             # TODO: there is a popup window here and possible we need to input credentials in a differet way...
 
-            self.send_keys(self._page.password_input, password)
-            self.click(self._page.signin_input)
-            if self.driver.current_url.startswith('https://login.windows-ppe.net/common/login'):
-                self.click(self._page.no_button)
+            self.driver.get('https://%s:%s%s' %(self.username, self.password, self.url))
+            self.click(self._page.phone_verify)
+            # self.send_keys(self._page.password_input, password)
+            # self.click(self._page.signin_input)
+            # if self.driver.current_url.startswith('https://login.windows-ppe.net/common/login'):
+            #     self.click(self._page.no_button)
 
             # Now it should be in Homepage!
             if user_name in self.driver.page_source:
